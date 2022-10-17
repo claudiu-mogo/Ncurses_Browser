@@ -1,0 +1,45 @@
+
+Broswer-ul arata groaznic, dar functioneaza. La inceputul README-ului si
+in Makefile apare regula de compilare.
+Am folosit atat ncurses, cat si biblioteca de meniuri.
+Ar trebui sa functioneza toate caracteristicile, daca nu, recompilati sau
+puneti spatiu dupa cuvintele cautate.
+Este o biblioteca extrem de suspecta. Uneori dadea segfault, alteori nu dadea
+pe acelasi text introdus. Eu zic ca am rezolvat problemele totusi.
+
+Baza de date este compusa din structul de la task1.
+Functiile "continutul", "titlul", "switch_culori" au aceleasi atributii.
+Functiile "parsare_site_cuvinte"-simplu si avansat reprezinta echivalentele
+taskurilor 2 si 3, de data aceasta input-ul fiind "text_de_cautat", anume
+ce a scris utilizatorul in bara de cautare. Functiile returneaza
+lungimea lui "site_cu_cuvinte".
+
+Programul in sine incepe cu crearea unui nou screen si window, alegerea
+primei palete de culori si afisarea numelui prin functia "nume_motor".
+
+In permanenta in coltul dreapta-jos vor aparea comenzile posibile,
+fiind actualizate in functie de tastele apasate.
+
+Initial asteptam c sau q. Daca primim q, se iese din asteptare(while)
+si se face endwin. Daca primim c se lanseaza functia cautare.
+
+Functia "cautare" creeaza un new_win cu o bara de cautare pe mijloc,
+cursor vizibil, iar utilizatorul introduce text pana cand se primeste enter.
+Textul introdus se salveaza in "text_de_cautat".
+Dupa primirea tastei enter asteptam primirea s a sau q.
+Daca primim q se inchide fereastra. Daca primim s si a se va lansa functia
+generala "parsare_completa", cu o "decizie" 0 sau 1. Daca dupa aceea se va 
+dori reintoarcerea la cautare, variabila recusiv va permite acest lucru.
+
+Functia "parsare_completa" (aka main-ul din celelalte functii) are rolul
+de a accesa toate siteurile disponibile si, in functie de "decizie",
+lanseaza cautarea avansata sau simpla. La final creeaza un meniu.
+
+Functia "creare_meniu" genereaza o noua fereastra, cu o subfereastra
+pentru meniu. Itemele sunt siteurile bune.
+Utilizatorul poate alege oricare dintre siteuri, iar
+cand se primeste tasta enter se declanseaza functia "enter".
+Aceasta initializeaza alta fereastra si creeaza o noua paleta de culori in
+functie de culorile din html-ul siteului ales.
+La final se afiseaza continutul siteului si titlul boldat pe mijloc.
+Singura optinue de acum este b back, iar actiunile pot fi repetate.
